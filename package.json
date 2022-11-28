@@ -1,0 +1,24 @@
+{
+  "name": "otk-bot",
+  "version": "1.0.0",
+  "description": "Um bot do Discord da Nação OTK",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "node"
+  ],
+  "author": "S1lviuz",
+  "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+    "discord.js": "^14.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
