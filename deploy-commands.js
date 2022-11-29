@@ -1,6 +1,6 @@
 const { REST, Routes } = require('discord.js');
 const fs = require('node:fs');
-require('./constants')
+const { DISCORD_TOKEN, APP_ID, GUILD_ID } = require('./constants');
 
 const commands = [];
 // Grab all the command files from the commands directory you created earlier

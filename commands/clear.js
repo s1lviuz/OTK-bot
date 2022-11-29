@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction) {
 
 		
-		await interaction.reply('Limpeza concluida!');
+		await interaction.reply('Essa opção ainda está em desenvolvimento. :)');
 		await wait(1000);
 		return await interaction.deleteReply();
 	},

@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-require('./constants')
+const { DISCORD_TOKEN, APP_ID, GUILD_ID } = require('./constants');
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
