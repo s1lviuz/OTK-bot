@@ -26,6 +26,12 @@ const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 			{ body: commands },
 		);
 
+		// The put method is used to fully refresh all commands global
+		// const data = await rest.put(
+		// 	Routes.applicationCommands(APP_ID),
+		// 	{ body: commands },
+		// );
+
 		console.log(`Foram carregados com sucesso os ${data.length} (/) comandos.`);
 	} catch (error) {
 		// And of course, make sure you catch and log any errors!
