@@ -5,6 +5,6 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Preparado! Entrou como ${client.user.tag}`);
-		client.user.setActivity('conversa fora - /info', { type: ActivityType.Playing });
+		client.user.setActivity('conversa fora - /help', { type: ActivityType.Playing });
 	},
 };

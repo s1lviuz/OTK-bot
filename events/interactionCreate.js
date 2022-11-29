@@ -16,7 +16,7 @@ module.exports = {
             await command.execute(interaction);
         } catch (error) {
             console.error(error);
-            await interaction.reply({ content: 'Há um erro na axecução desse comando!', ephemeral: true });
+            await interaction.reply({ content: 'Há um erro na execução desse comando!', ephemeral: true });
         }
     },
 };
