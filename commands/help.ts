@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
 const commandsDesc = `
     \`/info\` - Comandos de informação sobre o servidor e usuários, use /info help para saber mais.\n
@@ -10,7 +10,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
         .setDescription('Comandos de informação sobre o servidor e usuários, use /info help para saber mais.'),
-    async execute(interaction) {
+    async execute(interaction: any) {
         const embed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle('Comandos disponiveis:')

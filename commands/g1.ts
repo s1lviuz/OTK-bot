@@ -1,18 +1,18 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import axios from 'axios';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('g1')
         .setDescription('Retorna uma lista com o titulo das principais noticias do Globo.com'),
-    async execute(interaction) {
+    async execute(interaction: any) {
         const news = await axios({
             method: 'get',
             url: 'https://www.globo.com/'
         })
             .then(response => response.data)
             .then(text => text.match(/<(\h2 class="post__title"+)[\s\S]*?>([\s\S]*?)<\/\h2>/g))
-            .then(elements => elements.map(element => {
+            .then(elements => elements.map((element: string) => {
                 return element.replace(/<h2 class="post__title">/, '').replace(/<\/h2>/, ' \n\n ').replace(/&[\s\S]*;/, '')
             }))
 
