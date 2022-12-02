@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
 const commandsDesc = `
     \`/info user\` - Retorna as informações de um Usuário especifico ou a sua.\n
@@ -35,7 +35,7 @@ module.exports = {
                 .setDescription('Retorna a lista de comandos de /info.'))
     ,
 
-    async execute(interaction) {
+    async execute(interaction: any) {
         if (interaction.options.getSubcommand() === 'user') {
             const user = interaction.options.getUser('target');
 
