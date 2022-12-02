@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -7,4 +7,4 @@ const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const APP_ID = process.env.APP_ID;
 
-module.exports = { GUILD_ID, DISCORD_TOKEN, PUBLIC_KEY, APP_ID }
+export { GUILD_ID, DISCORD_TOKEN, PUBLIC_KEY, APP_ID }

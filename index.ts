@@ -1,17 +1,17 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const { DISCORD_TOKEN } = require('./constants');
+import fs = require('node:fs');
+import path = require('node:path');
+import { DISCORD_TOKEN } from './constants';
 
 // Require the necessary discord.js classes
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+import { Client, Events, GatewayIntentBits, Collection } from 'discord.js';
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client: any = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Command handling
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
 
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
@@ -26,15 +26,15 @@ for (const file of commandFiles) {
 
 // Event handling
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.ts'));
 
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath);
 	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
+		client.once(event.name, (...args: any) => event.execute(...args));
 	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+		client.on(event.name, (...args: any) => event.execute(...args));
 	}
 }
 
