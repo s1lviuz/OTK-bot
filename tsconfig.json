@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+  "compilerOptions": {
         "target": "ESNext",
         "module": "commonjs",
         "rootDir": "./src/",
@@ -20,11 +20,8 @@
         "sourceMap": false,
         "baseUrl": "./"
     },
-    "files": [
-        "index.ts"
-    ],
     "include": [
-        "./**/*.ts"
+        "src"
     ],
     "exclude": [
         "node_modules",

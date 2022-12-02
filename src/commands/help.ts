@@ -1,9 +1,12 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import { stripIndent } from 'common-tags';
 
-const commandsDesc = `
-    \`/info\` - Comandos de informação sobre o servidor e usuários, use /info help para saber mais.\n
-    \`/g1\` - Retorna uma lista com o titulo das principais noticias do Globo.com.\n
-    \`/clear\` - Limpa todas as mensagens do canal de texto. (Em desenvolvimento)\n
+const commandsDesc = stripIndent`
+    \`/info\` - Comandos de informação sobre o servidor e usuários, use /info help para saber mais.
+
+    \`/g1\` - Retorna uma lista com o titulo das principais noticias do Globo.com.
+
+    \`/clear\` - Limpa todas as mensagens do canal de texto. (Em desenvolvimento)
 `
 
 module.exports = {

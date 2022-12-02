@@ -1,10 +1,15 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import { stripIndent } from 'common-tags';
+import { client } from '../index'
 
-const commandsDesc = `
-    \`/info user\` - Retorna as informações de um Usuário especifico ou a sua.\n
-    \`/info server\` - Retorna as informações do servidor.\n
-    \`/info ping\` - Responde com Pong!\n
-    \`/info avatar\` - Retorna o avatar do usuário especifico, ou o seu.\n
+const commandsDesc = stripIndent`
+    \`/info user\` - Retorna as informações de um Usuário especifico ou a sua.
+
+    \`/info server\` - Retorna as informações do servidor.
+
+    \`/info ping\` - Responde com Pong!
+
+    \`/info avatar\` - Retorna o avatar do usuário especifico, ou o seu. 
 `
 
 module.exports = {
@@ -23,7 +28,7 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('ping')
-                .setDescription('Responde com Pong!'))
+                .setDescription('Retorna a latência da conexão com o bot.'))
         .addSubcommand(subcommand =>
             subcommand
                 .setName('avatar')
@@ -40,9 +45,15 @@ module.exports = {
             const user = interaction.options.getUser('target');
 
             if (user) {
-                await interaction.reply(`Username: ${user.username}\nID: ${user.id}`);
+                await interaction.reply(stripIndent`
+                Username: ${user.username}
+                ID: ${user.id}
+                `);
             } else {
-                await interaction.reply(`Seu username: ${interaction.user.username}\nSeu ID: ${interaction.user.id}`);
+                await interaction.reply(stripIndent`
+                Seu username: ${interaction.user.username}
+                Seu ID: ${interaction.user.id}
+                `);
             }
         }
 
@@ -51,7 +62,7 @@ module.exports = {
         }
 
         else if (interaction.options.getSubcommand() === 'ping') {
-            await interaction.reply(`Pong!`);
+            await interaction.reply(`Latência: ${client.ws.ping}ms.`);
         }
 
         else if (interaction.options.getSubcommand() === 'avatar') {

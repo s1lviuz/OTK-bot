@@ -1,17 +1,31 @@
 import fs = require('node:fs');
 import path = require('node:path');
 import { DISCORD_TOKEN } from './constants';
+import logger from './logger';
 
 // Require the necessary discord.js classes
-import { Client, Events, GatewayIntentBits, Collection } from 'discord.js';
+import { Client, IntentsBitField, Collection } from 'discord.js';
+
+// Create a new IntentsBit instance
+const myIntents = new IntentsBitField([
+	IntentsBitField.Flags.Guilds,
+	IntentsBitField.Flags.GuildMessages,
+	IntentsBitField.Flags.MessageContent,
+	IntentsBitField.Flags.GuildMembers,
+	IntentsBitField.Flags.GuildPresences,
+	IntentsBitField.Flags.DirectMessages,
+	IntentsBitField.Flags.GuildIntegrations,
+	IntentsBitField.Flags.GuildVoiceStates,
+]);
 
 // Create a new client instance
-const client: any = new Client({ intents: [GatewayIntentBits.Guilds] });
+export const client: any = new Client({ intents: myIntents });
 
 // Command handling
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
+console.log(commandsPath)
 
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
@@ -20,7 +34,7 @@ for (const file of commandFiles) {
 	if ('data' in command && 'execute' in command) {
 		client.commands.set(command.data.name, command);
 	} else {
-		console.log(`[WARNING] O comando em ${filePath} está faltando a propriedade "data" ou "execute" requeridas.`);
+		logger.warn(`O comando em ${filePath} está faltando a propriedade "data" ou "execute" requeridas.`)
 	}
 }
 
